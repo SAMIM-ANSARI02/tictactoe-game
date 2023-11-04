@@ -16,7 +16,7 @@ const App = () => {
 
   const gamingBoard=history[currentMove]
 
-  const winner =calculateWinner(gamingBoard.square)
+  const {winner,winningSquare} =calculateWinner(gamingBoard.square)
  
   
    console.log({history,currentMove})
@@ -61,7 +61,7 @@ const App = () => {
   return (
     <div className="app">
       <StatusMessage winner={winner} gamingBoard={gamingBoard}/>
-      <Board  square={gamingBoard.square} handleSquareClick={handleSquareClick}/>
+      <Board  square={gamingBoard.square} winningSquare={winningSquare} handleSquareClick={handleSquareClick}/>
       <button onClick={onNewGameStart} className={`btn-reset ${winner?'active':''}`}>Start new Game</button>
       <h2>Current Game History</h2>
       <History history={history} moveTo={moveTo} currentMove={currentMove}/>
